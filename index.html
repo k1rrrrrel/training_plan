@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>План тренировок</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script>
+        async function FillExecs() {
+            let response = await fetch(`/jsons/training_plan.json`);
+
+            if (response.ok) {
+                let json = await response.json();
+               
+                const modal = document.getElementById("main");
+
+                json.forEach(dayPlan => {
+                    let trainDiv = document.createElement("div");
+                    trainDiv.className = "training-block";
+                    modal.appendChild(trainDiv);
+
+                    let dayDiv = document.createElement("div");
+                    dayDiv.className = "day-info-block";
+                    trainDiv.appendChild(dayDiv);
+
+                    let dayTitle = document.createElement("div");
+                    dayTitle.className = "day-info-block-title";
+                    dayTitle.textContent = dayPlan.name;
+                    dayDiv.appendChild(dayTitle);
+
+                    let dayDate = document.createElement("div");
+                    dayDate.className = "day-info-block-date";
+                    dayDate.textContent = dayPlan.date;
+                    dayDiv.appendChild(dayDate);
+
+                    let execDiv = document.createElement("div");
+                    execDiv.className = "exec-block";
+                    trainDiv.appendChild(execDiv);
+
+                    let execList = document.createElement("ul");
+                    execList.className = "exec-list";
+                    execDiv.appendChild(execList);
+
+                    dayPlan.exercises.forEach(element => {
+                        let execItem = document.createElement("li");
+                        execItem.className = "exec-item";
+                        execItem.id = element.id
+                        execList.appendChild(execItem);
+
+                        let execTitle = document.createElement("div");
+                        execTitle.className = "exec-item-title";
+                        execTitle.textContent = element.title;
+                        execItem.appendChild(execTitle);
+
+                        let execDesc = document.createElement("div");
+                        execDesc.className = "exec-item-desc";
+                        execDesc.textContent = element.desc;
+                        execItem.appendChild(execDesc);
+
+                        let execForm = document.createElement("form");
+                        execForm.className = "exec-item-form";
+                        execItem.appendChild(execForm);
+
+                        let indicatorContainer = document.createElement("div");
+                        indicatorContainer.className = "indicator-container";
+                        execForm.appendChild(indicatorContainer);
+
+                        let weightBlock = document.createElement("div");
+                        weightBlock.className = "indicator-block";
+                        indicatorContainer.appendChild(weightBlock);
+
+                        let inputWeight = document.createElement("input"); 
+                        inputWeight.className = "indicator-input";
+                        inputWeight.type = "number";
+                        inputWeight.name = "last_weight";
+                        inputWeight.min = 0;
+                        inputWeight.required = true;
+                        weightBlock.appendChild(inputWeight);
+
+                        let spanWeight = document.createElement("span");
+                        spanWeight.textContent = "кг";
+                        weightBlock.appendChild(spanWeight);
+
+                        let repeatBlock = document.createElement("div");
+                        repeatBlock.className = "indicator-block";
+                        indicatorContainer.appendChild(repeatBlock);
+
+                        let inputRepeat = document.createElement("input");
+                        inputRepeat.className = "indicator-input";
+                        inputRepeat.type = "number";
+                        inputRepeat.name = "last_weight";
+                        inputRepeat.min = 0;
+                        inputRepeat.required = true;
+                        repeatBlock.appendChild(inputRepeat);
+
+                        let repeatWeight = document.createElement("span");
+                        repeatWeight.textContent = "раз";
+                        repeatBlock.appendChild(repeatWeight);
+
+                        let formButton = document.createElement("button");
+                        formButton.className = "indicator-button";
+                        formButton.textContent = "Сохранить";
+                        execForm.appendChild(formButton);
+                    });
+                });
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <div id="main" class="main-wrapper">
+
+        <script>
+            FillExecs();
+        </script>
+        <!-- <div class="training-block">
+            <div class="day-info-block">
+                <div class="day-info-block-title">Ноги || Плечи</div>
+                <div class="day-info-block-date">Дата</div>
+            </div>
+            <div class="exec-block">
+                <ul id="legs" class="exec-list">
+                </ul>
+            </div>
+        </div>
+
+        <div class="training-block">
+            <div class="day-info-block">
+                <div class="day-info-block-title">Спина || Бицепс</div>
+                <div class="day-info-block-date">Дата</div>
+            </div>
+            <div class="exec-block">
+                <ul class="exec-list">
+                    <li class="exec-item">
+                        <div class="exec-item-title">Название упражнения</div>
+                        <div class="exec-item-desc">Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание</div>
+                        <form class="exec-item-form">
+                            <div class="indicator-container">
+                                <div class="indicator-block">
+                                    <input class="indicator-input" name="last_weight" type="number" min="0" required>
+                                    <span>кг</span>
+                                </div>
+                                <div class="indicator-block">
+                                    <input class="indicator-input" name="last_repeat-count" type="number" min="0" required>
+                                    <span>раз</span>
+                                </div>
+                            </div>
+                            <button class="indicator-button" type="submit">Сохранить</button>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="training-block">
+            <div class="day-info-block">
+                <div class="day-info-block-title">Грудь || Трицепс</div>
+                <div class="day-info-block-date">Дата</div>
+            </div>
+            <div class="exec-block">
+                <ul class="exec-list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div> -->
+
+    </div>
+
+</body>
+</html>
