@@ -1,0 +1,92 @@
+body {
+    background: #d3d3d3;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.training-block {
+    background-color: #ebcb75;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 2%;
+}
+
+.day-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: #705202 2px solid;
+    padding: 0 10px 10px;
+}
+
+.day-info-block-title,
+.day-info-block-date {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.exec-list {
+    list-style-type: none;
+    padding: 0;
+    width: 600px;
+}
+.exec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: #705202 2px solid;
+    margin-top: 10px;
+}
+.exec-item-title,
+.exec-item-desc {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.exec-item-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.indicator-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.indicator-block {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 2px;
+    margin-right: 15px;
+}
+
+input[type="number"] { 
+    width: 25px;
+    text-align: center;
+    margin: 5px 5px 0 0;
+}
+
+button {
+    margin: 5px 0 0 0;
+    align-self: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
